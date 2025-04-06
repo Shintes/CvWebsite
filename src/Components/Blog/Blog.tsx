@@ -10,7 +10,6 @@ import {
   useTheme,
   Button,
   Fade,
-  Paper,
   Stack,
   Tabs,
   Tab,
@@ -141,13 +140,9 @@ const categories = ["All", "Development", "Design", "Technology"];
 
 function Blog() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const handleCategoryChange = (
-    event: React.SyntheticEvent,
-    newValue: string
-  ) => {
+  const handleCategoryChange = (_: React.SyntheticEvent, newValue: string) => {
     setSelectedCategory(newValue);
   };
 
