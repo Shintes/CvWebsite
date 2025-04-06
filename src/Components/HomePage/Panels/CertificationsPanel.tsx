@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { Certification } from "../../Dto/Certification";
+import { Certification } from "../../../Dto/Certification";
 import { LinkBox } from "../StyledComponents";
 
 interface CertificationsPanelProps {
@@ -20,7 +20,7 @@ function CertificationsPanel({ certifications }: CertificationsPanelProps) {
           transition={{ duration: 0.4, delay: index * 0.1 }}
         >
           <LinkBox
-            href={cert.url}
+            href={cert.credentialUrl}
             target="_blank"
             sx={{
               display: "inline-block",
@@ -45,7 +45,7 @@ function CertificationsPanel({ certifications }: CertificationsPanelProps) {
               letterSpacing: "0.02em",
             }}
           >
-            {cert.issuer} • {cert.date}
+            {cert.issuer} • {cert.issueDate}
           </Typography>
         </motion.div>
       ))}

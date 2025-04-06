@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { Language } from "../../Dto/Language";
+import { Language } from "../../../Dto/Language";
 
 interface LanguagesPanelProps {
   languages: Language[];
@@ -43,7 +43,7 @@ function LanguagesPanel({ languages }: LanguagesPanelProps) {
             variant="body2"
             sx={{ color: theme.palette.text.secondary }}
           >
-            {lang.level}
+            {lang.proficiency}
           </Typography>
         </motion.div>
       ))}
