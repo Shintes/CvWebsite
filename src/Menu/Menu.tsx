@@ -15,6 +15,8 @@ import Home from "../Components/HomePage/Homepage";
 import About from "../Components/About/About";
 import Contact from "../Components/Contact/Contact";
 import { Brightness7, Brightness4 } from "@mui/icons-material";
+import Projects from "../Components/Projects/Projects";
+import Blog from "../Components/Blog/Blog";
 
 interface MenuProps {
   toggleDarkMode: () => void;
@@ -189,8 +191,8 @@ function Menu({ toggleDarkMode }: MenuProps) {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<div>Projects Page</div>} />
-          <Route path="/blog" element={<div>Blog Page</div>} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Container>
