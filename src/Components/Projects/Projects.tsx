@@ -10,7 +10,6 @@ import {
   useTheme,
   Button,
   Fade,
-  useMediaQuery,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import placeholderImage from "../../assets/placeholder.jpg";

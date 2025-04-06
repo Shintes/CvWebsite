@@ -13,7 +13,6 @@ import {
   Stack,
   Tabs,
   Tab,
-  useMediaQuery,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { motion } from "framer-motion";
