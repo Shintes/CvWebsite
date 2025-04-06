@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { Education } from "../../Dto/Education";
+import { Education } from "../../../Dto/Education";
 
 interface EducationPanelProps {
   education: Education[];
@@ -37,7 +37,7 @@ function EducationPanel({ education }: EducationPanelProps) {
               letterSpacing: "0.02em",
             }}
           >
-            {edu.school} • {edu.date}
+            {edu.institution} • {edu.startDate} - {edu.endDate}
           </Typography>
           <Typography
             variant="body2"

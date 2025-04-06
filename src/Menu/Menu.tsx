@@ -5,10 +5,7 @@ import {
   Drawer,
   IconButton,
   Container,
-  MenuItem,
-  SelectChangeEvent,
   Box,
-  Select,
 } from "@mui/material";
 import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
@@ -23,40 +20,29 @@ interface MenuProps {
   toggleDarkMode: () => void;
 }
 
-const LeftSideControls = styled(Box)({
+const LeftSideControls = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   gap: "1.5rem",
-});
-
-const StyledSelect = styled(Select)(({ theme }) => ({
-  backgroundColor: "transparent",
-  backdropFilter: "blur(8px)",
-  borderRadius: "12px",
-  minWidth: "120px",
-  transition: "all 0.3s ease-in-out",
-  border: `1px solid ${
-    theme.palette.mode === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"
-  }`,
-  "& .MuiSelect-select": {
-    padding: "8px 16px",
-  },
-  "&:hover": {
-    backgroundColor:
-      theme.palette.mode === "dark"
-        ? "rgba(255,255,255,0.05)"
-        : "rgba(0,0,0,0.05)",
+  "& .MuiIconButton-root": {
+    color: theme.palette.text.primary,
+    "&:hover": {
+      backgroundColor:
+        theme.palette.mode === "dark"
+          ? "rgba(255,255,255,0.05)"
+          : "rgba(0,0,0,0.05)",
+    },
   },
 }));
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     backgroundColor: theme.palette.background.default,
-    width: 200,
+    width: 250,
     padding: "2rem 1rem",
     "& button": {
       margin: "0.5rem 0",
-      borderRadius: "8px",
+      borderRadius: theme.shape.borderRadius,
       transition: "all 0.3s ease",
       "&:hover": {
         backgroundColor:
@@ -69,12 +55,37 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
   },
 }));
 
+const StyledAppBar = styled(AppBar)(({ theme }) => ({
+  background:
+    theme.palette.mode === "dark"
+      ? `linear-gradient(45deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`
+      : `linear-gradient(45deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
+  backdropFilter: "blur(10px)",
+  borderBottom: `1px solid ${
+    theme.palette.mode === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"
+  }`,
+}));
+
+const NavButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  textTransform: "none",
+  fontWeight: 600,
+  fontSize: "1rem",
+  padding: "8px 16px",
+  borderRadius: theme.shape.borderRadius,
+  transition: "all 0.3s ease",
+  "&:hover": {
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? "rgba(255,255,255,0.05)"
+        : "rgba(0,0,0,0.05)",
+    transform: "translateY(-2px)",
+  },
+})) as typeof Button;
+
 function Menu({ toggleDarkMode }: MenuProps) {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<string>("en");
-  const handleLanguageChange = (event: SelectChangeEvent<unknown>) => {
-    setSelectedLanguage(event.target.value as string);
-  };
+  const theme = useTheme();
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -82,97 +93,104 @@ function Menu({ toggleDarkMode }: MenuProps) {
 
   return (
     <Router>
-      <AppBar
-        position="sticky"
-        elevation={0}
-        sx={{
-          bgcolor: "background.default",
-          borderBottom: (theme) =>
-            `1px solid ${
-              theme.palette.mode === "dark"
-                ? "rgba(255,255,255,0.1)"
-                : "rgba(0,0,0,0.1)"
-            }`,
-          backdropFilter: "blur(10px)",
-        }}
-      >
-        <Toolbar
-          sx={{ display: "flex", justifyContent: "space-between", py: 1 }}
-        >
-          <IconButton
-            edge="start"
-            aria-label="menu"
-            onClick={toggleDrawer}
+      <StyledAppBar position="sticky" elevation={0}>
+        <Toolbar>
+          <Box
             sx={{
-              transition: "transform 0.3s ease",
-              "&:hover": { transform: "scale(1.1)" },
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
             }}
           >
-            <MenuIcon />
-          </IconButton>
-          <LeftSideControls>
-            <IconButton
-              onClick={toggleDarkMode}
-              sx={{
-                transition: "transform 0.3s ease",
-                "&:hover": { transform: "rotate(180deg)" },
-              }}
-            >
-              {useTheme().palette.mode === "dark" ? (
-                <Brightness7 color="inherit" />
-              ) : (
-                <Brightness4 color="inherit" />
-              )}
-            </IconButton>
-            <StyledSelect
-              value={selectedLanguage}
-              onChange={handleLanguageChange}
-              variant="outlined"
-              size="small"
-            >
-              <MenuItem value="en">English</MenuItem>
-              <MenuItem value="es">Español</MenuItem>
-              <MenuItem value="fr">Français</MenuItem>
-            </StyledSelect>
-          </LeftSideControls>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <IconButton
+                edge="start"
+                aria-label="menu"
+                onClick={toggleDrawer}
+                sx={{
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "scale(1.1)" },
+                  color: theme.palette.text.primary,
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+            <LeftSideControls>
+              <IconButton
+                onClick={toggleDarkMode}
+                sx={{
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "rotate(180deg)" },
+                }}
+              >
+                {useTheme().palette.mode === "dark" ? (
+                  <Brightness7 color="inherit" />
+                ) : (
+                  <Brightness4 color="inherit" />
+                )}
+              </IconButton>
+            </LeftSideControls>
+          </Box>
         </Toolbar>
-      </AppBar>
+      </StyledAppBar>
       <StyledDrawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
-        <div
+        <Box
           role="presentation"
           onClick={toggleDrawer}
           onKeyDown={toggleDrawer}
         >
-          <Button
-            color="inherit"
-            component={Link}
-            to="/"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            Home
-          </Button>
-          <Button
-            color="inherit"
-            component={Link}
-            to="/about"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            About
-          </Button>
-          <Button
-            color="inherit"
-            component={Link}
-            to="/contact"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            Contact
-          </Button>
-        </div>
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Home
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/about"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              About
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/projects"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Projects
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/blog"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Blog
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/contact"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Contact
+            </NavButton>
+          </Box>
+        </Box>
       </StyledDrawer>
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<div>Projects Page</div>} />
+          <Route path="/blog" element={<div>Blog Page</div>} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Container>

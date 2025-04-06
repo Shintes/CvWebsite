@@ -1,195 +1,118 @@
 import {
   Box,
   Typography,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+  Chip,
   useTheme,
-  IconButton,
-  CircularProgress,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import { Section, SectionTitle } from "./StyledComponents";
-import { NavigateBefore, NavigateNext } from "@mui/icons-material";
-import { useState } from "react";
-
-interface Project {
-  title: string;
-  image: string;
-  description: string;
-  url: string;
-}
+import { styled } from "@mui/material/styles";
+import { Project } from "../../Dto/ProjectDto";
 
 interface ProjectsSectionProps {
   projects: Project[];
-  onCardClick: (url: string) => void;
 }
 
-function ProjectsSection({ projects, onCardClick }: ProjectsSectionProps) {
+const ProjectsSection = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(8, 0),
+}));
+
+const ProjectCard = styled(Card)(() => ({
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+  borderRadius: "16px",
+  overflow: "hidden",
+  transition: "transform 0.3s ease-in-out",
+  "&:hover": {
+    transform: "translateY(-8px)",
+  },
+}));
+
+const ProjectImage = styled(CardMedia)({
+  height: 200,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+});
+
+const ProjectContent = styled(CardContent)(({ theme }) => ({
+  flexGrow: 1,
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(2),
+}));
+
+const TechnologyChip = styled(Chip)(({ theme }) => ({
+  margin: theme.spacing(0.5),
+  borderRadius: "8px",
+  background: `linear-gradient(135deg, ${theme.palette.primary.main}15 0%, ${theme.palette.secondary.main}15 100%)`,
+  color: theme.palette.text.primary,
+}));
+
+const ProjectsSectionComponent = ({ projects }: ProjectsSectionProps) => {
   const theme = useTheme();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
-  };
-
-  const getAdjacentIndex = (offset: number) => {
-    const newIndex = currentIndex + offset;
-    if (newIndex < 0) return projects.length - 1;
-    if (newIndex >= projects.length) return 0;
-    return newIndex;
-  };
-
-  if (!projects || projects.length === 0) {
-    return (
-      <Section>
-        <SectionTitle>Projects</SectionTitle>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "200px",
-          }}
-        >
-          <CircularProgress />
-        </Box>
-      </Section>
-    );
-  }
 
   return (
-    <Section>
-      <SectionTitle>Projects</SectionTitle>
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          maxWidth: "240px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          gap: 2,
-        }}
+    <ProjectsSection>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
       >
-        <Box
+        <Typography
+          variant="h2"
+          align="center"
           sx={{
-            position: "absolute",
-            left: -80,
-            width: "60px",
-            height: "240px",
-            opacity: 0.4,
-            filter: "blur(4px)",
-            backgroundImage: `url(${projects[getAdjacentIndex(-1)].image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderRadius: "8px",
-          }}
-        />
-
-        <motion.div
-          key={currentIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          style={{ width: "100%" }}
-        >
-          <Box
-            onClick={() => onCardClick(projects[currentIndex].url)}
-            sx={{
-              cursor: "pointer",
-              backgroundColor: theme.palette.background.paper,
-              borderRadius: "8px",
-              overflow: "hidden",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-              "&:hover img": {
-                transform: "scale(1.02)",
-              },
-            }}
-          >
-            <img
-              src={projects[currentIndex].image}
-              alt={projects[currentIndex].title}
-              style={{
-                width: "100%",
-                height: "240px",
-                objectFit: "cover",
-                transition: "transform 0.3s ease",
-              }}
-            />
-            <Box sx={{ p: 2 }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  mt: 1,
-                  mb: 1,
-                  fontSize: "1.1rem",
-                }}
-              >
-                {projects[currentIndex].title}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{ color: theme.palette.text.secondary }}
-              >
-                {projects[currentIndex].description}
-              </Typography>
-            </Box>
-          </Box>
-        </motion.div>
-
-        <Box
-          sx={{
-            position: "absolute",
-            right: -80,
-            width: "60px",
-            height: "240px",
-            opacity: 0.4,
-            filter: "blur(4px)",
-            backgroundImage: `url(${projects[getAdjacentIndex(1)].image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            borderRadius: "8px",
-          }}
-        />
-
-        <IconButton
-          onClick={handlePrevious}
-          sx={{
-            position: "absolute",
-            left: -45,
-            top: "50%",
-            transform: "translateY(-50%)",
-            backgroundColor: theme.palette.background.paper,
-            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-            "&:hover": {
-              backgroundColor: theme.palette.action.hover,
-            },
+            fontSize: { xs: "2rem", md: "2.5rem" },
+            fontWeight: 700,
+            marginBottom: 4,
+            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
           }}
         >
-          <NavigateBefore />
-        </IconButton>
-
-        <IconButton
-          onClick={handleNext}
-          sx={{
-            position: "absolute",
-            right: -45,
-            top: "50%",
-            transform: "translateY(-50%)",
-            backgroundColor: theme.palette.background.paper,
-            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-            "&:hover": {
-              backgroundColor: theme.palette.action.hover,
-            },
-          }}
-        >
-          <NavigateNext />
-        </IconButton>
-      </Box>
-    </Section>
+          Featured Projects
+        </Typography>
+        <Grid container spacing={4}>
+          {projects
+            .filter((project) => project.featured)
+            .map((project) => (
+              <Grid size={{ xs: 12, md: 6 }} key={project.id}>
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <ProjectCard>
+                    <ProjectImage image={project.image} title={project.title} />
+                    <ProjectContent>
+                      <Typography variant="h5" component="h3">
+                        {project.title}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary">
+                        {project.description}
+                      </Typography>
+                      <Box sx={{ mt: "auto" }}>
+                        {project.technologies.map((tech) => (
+                          <TechnologyChip
+                            key={tech}
+                            label={tech}
+                            size="small"
+                          />
+                        ))}
+                      </Box>
+                    </ProjectContent>
+                  </ProjectCard>
+                </motion.div>
+              </Grid>
+            ))}
+        </Grid>
+      </motion.div>
+    </ProjectsSection>
   );
-}
+};
 
-export default ProjectsSection;
+export default ProjectsSectionComponent;
