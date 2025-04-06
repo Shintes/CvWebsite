@@ -34,12 +34,7 @@ const Contact: React.FC = () => {
         px: 4,
       }}
     >
-      <Box
-        sx={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
+      <Box sx={{ maxWidth: "1200px", width: "100%" }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -58,113 +53,119 @@ const Contact: React.FC = () => {
             Contact
           </Typography>
           <form onSubmit={handleSubmit}>
-            <TextField
-              fullWidth
-              label="Name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              margin="normal"
-              required
-              sx={{
-                "& .MuiOutlinedInput-root": {
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", md: "row" },
+                  gap: 3,
+                }}
+              >
+                <TextField
+                  fullWidth
+                  label="Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: 0,
+                      "& fieldset": {
+                        borderColor: theme.palette.text.primary,
+                      },
+                      "&:hover fieldset": {
+                        borderColor: theme.palette.text.primary,
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: theme.palette.text.primary,
+                      },
+                    },
+                    "& .MuiInputLabel-root": {
+                      color: theme.palette.text.secondary,
+                    },
+                    "& .MuiInputBase-input": {
+                      color: theme.palette.text.primary,
+                    },
+                  }}
+                />
+                <TextField
+                  fullWidth
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: 0,
+                      "& fieldset": {
+                        borderColor: theme.palette.text.primary,
+                      },
+                      "&:hover fieldset": {
+                        borderColor: theme.palette.text.primary,
+                      },
+                      "&.Mui-focused fieldset": {
+                        borderColor: theme.palette.text.primary,
+                      },
+                    },
+                    "& .MuiInputLabel-root": {
+                      color: theme.palette.text.secondary,
+                    },
+                    "& .MuiInputBase-input": {
+                      color: theme.palette.text.primary,
+                    },
+                  }}
+                />
+              </Box>
+              <TextField
+                fullWidth
+                label="Message"
+                name="message"
+                multiline
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderRadius: 0,
+                    "& fieldset": {
+                      borderColor: theme.palette.text.primary,
+                    },
+                    "&:hover fieldset": {
+                      borderColor: theme.palette.text.primary,
+                    },
+                    "&.Mui-focused fieldset": {
+                      borderColor: theme.palette.text.primary,
+                    },
+                  },
+                  "& .MuiInputLabel-root": {
+                    color: theme.palette.text.secondary,
+                  },
+                  "& .MuiInputBase-input": {
+                    color: theme.palette.text.primary,
+                  },
+                }}
+              />
+              <Button
+                type="submit"
+                variant="outlined"
+                sx={{
                   borderRadius: 0,
-                  "& fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                  "&:hover fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                },
-                "& .MuiInputLabel-root": {
-                  color: theme.palette.text.secondary,
-                },
-                "& .MuiInputBase-input": {
-                  color: theme.palette.text.primary,
-                },
-              }}
-            />
-            <TextField
-              fullWidth
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              margin="normal"
-              required
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  "& fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                  "&:hover fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                },
-                "& .MuiInputLabel-root": {
-                  color: theme.palette.text.secondary,
-                },
-                "& .MuiInputBase-input": {
-                  color: theme.palette.text.primary,
-                },
-              }}
-            />
-            <TextField
-              fullWidth
-              label="Message"
-              name="message"
-              multiline
-              rows={4}
-              value={formData.message}
-              onChange={handleChange}
-              margin="normal"
-              required
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  "& fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                  "&:hover fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                  "&.Mui-focused fieldset": {
-                    borderColor: theme.palette.text.primary,
-                  },
-                },
-                "& .MuiInputLabel-root": {
-                  color: theme.palette.text.secondary,
-                },
-                "& .MuiInputBase-input": {
-                  color: theme.palette.text.primary,
-                },
-              }}
-            />
-            <Button
-              type="submit"
-              variant="outlined"
-              sx={{
-                mt: 4,
-                borderRadius: 0,
-                borderColor: theme.palette.text.primary,
-                color: theme.palette.text.primary,
-                "&:hover": {
-                  backgroundColor: theme.palette.text.primary,
-                  color: theme.palette.background.default,
                   borderColor: theme.palette.text.primary,
-                },
-              }}
-            >
-              Send Message
-            </Button>
+                  color: theme.palette.text.primary,
+                  "&:hover": {
+                    backgroundColor: theme.palette.text.primary,
+                    color: theme.palette.background.default,
+                    borderColor: theme.palette.text.primary,
+                  },
+                }}
+              >
+                Send Message
+              </Button>
+            </Box>
           </form>
         </motion.div>
       </Box>

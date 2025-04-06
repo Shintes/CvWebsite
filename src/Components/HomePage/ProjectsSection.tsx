@@ -81,7 +81,7 @@ const ProjectsSectionComponent = ({ projects }: ProjectsSectionProps) => {
           {projects
             .filter((project) => project.featured)
             .map((project) => (
-              <Grid item xs={12} md={6} key={project.id}>
+              <Grid size={{ xs: 12, md: 6 }} key={project.id}>
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

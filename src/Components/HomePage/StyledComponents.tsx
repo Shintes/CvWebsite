@@ -245,17 +245,3 @@ export const StyledIconButton = styled(IconButton)(({ theme }) => ({
         : `linear-gradient(135deg, ${theme.palette.primary.dark} 0%, ${theme.palette.secondary.dark} 100%)`,
   },
 }));
-
-// Grid and Layout
-export const StyledGridContainer = styled(Box)(({ theme }) => ({
-  display: "grid",
-  gap: theme.spacing(4),
-  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-}));
-
-export const StyledFlexContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  gap: theme.spacing(2),
-}));

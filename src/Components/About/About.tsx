@@ -1,5 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import TechStack from "./TechStack";
+import PersonalInterests from "./PersonalInterests";
+import CoreValues from "./CoreValues";
 
 const About: React.FC = () => {
   return (
@@ -10,14 +13,10 @@ const About: React.FC = () => {
         alignItems: "center",
         justifyContent: "center",
         px: 4,
+        py: 8,
       }}
     >
-      <Box
-        sx={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-        }}
-      >
+      <Box sx={{ maxWidth: "1200px", width: "100%" }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,9 +30,12 @@ const About: React.FC = () => {
               marginBottom: 4,
               letterSpacing: "-0.03em",
               lineHeight: 1,
+              background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
             }}
           >
-            About
+            About Me
           </Typography>
           <Typography
             variant="body1"
@@ -45,25 +47,30 @@ const About: React.FC = () => {
               lineHeight: 1.7,
             }}
           >
-            I'm a passionate developer with a focus on creating modern web
-            applications. My approach combines clean code principles with modern
-            development practices. I'm constantly exploring new technologies and
-            frameworks to stay at the forefront of web development.
+            I'm a full-stack developer specializing in modern web technologies
+            and enterprise-grade applications. With expertise in React, Redux
+            Toolkit, and .NET Core, I build scalable, maintainable solutions
+            that deliver exceptional user experiences.
           </Typography>
           <Typography
             variant="body1"
             sx={{
               fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
               color: "text.secondary",
+              marginBottom: 4,
               maxWidth: "800px",
               lineHeight: 1.7,
             }}
           >
-            I believe in building efficient, scalable solutions that provide
-            great user experiences. My work spans across frontend and backend
-            development, with a particular interest in creating seamless,
-            intuitive interfaces.
+            My backend expertise includes .NET Core, Entity Framework, and C#,
+            allowing me to create robust RESTful APIs and microservices. I
+            follow clean architecture principles and implement SOLID design
+            patterns to ensure code quality and maintainability.
           </Typography>
+
+          <TechStack />
+          <PersonalInterests />
+          <CoreValues />
         </motion.div>
       </Box>
     </Box>

@@ -36,7 +36,7 @@ const AboutSectionComponent = ({ about }: AboutSectionProps) => {
         transition={{ duration: 0.8 }}
       >
         <Grid container spacing={4} alignItems="center">
-          <Grid item xs={12} md={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -49,7 +49,7 @@ const AboutSectionComponent = ({ about }: AboutSectionProps) => {
               />
             </motion.div>
           </Grid>
-          <Grid item xs={12} md={8}>
+          <Grid size={{ xs: 12, md: 8 }}>
             <AboutContent>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}

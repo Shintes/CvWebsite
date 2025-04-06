@@ -19,6 +19,6 @@ body {
 }
 
 [data-theme="dark"] ::selection {
-  background-color: var(--selection-background, #DFE6E9);
-  color: var(--selection-color, #17191A);
+  background-color: var(--selection-background, #dfe6e9);
+  color: var(--selection-color, #17191a);
 }
