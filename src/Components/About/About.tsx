@@ -1,10 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { motion } from "framer-motion";
 
 const About: React.FC = () => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
@@ -48,10 +45,10 @@ const About: React.FC = () => {
               lineHeight: 1.7,
             }}
           >
-            I'm a passionate developer with a focus on creating modern web applications.
-            My approach combines clean code principles with modern development practices.
-            I'm constantly exploring new technologies and frameworks to stay at the
-            forefront of web development.
+            I'm a passionate developer with a focus on creating modern web
+            applications. My approach combines clean code principles with modern
+            development practices. I'm constantly exploring new technologies and
+            frameworks to stay at the forefront of web development.
           </Typography>
           <Typography
             variant="body1"
@@ -62,9 +59,10 @@ const About: React.FC = () => {
               lineHeight: 1.7,
             }}
           >
-            I believe in building efficient, scalable solutions that provide great
-            user experiences. My work spans across frontend and backend development,
-            with a particular interest in creating seamless, intuitive interfaces.
+            I believe in building efficient, scalable solutions that provide
+            great user experiences. My work spans across frontend and backend
+            development, with a particular interest in creating seamless,
+            intuitive interfaces.
           </Typography>
         </motion.div>
       </Box>

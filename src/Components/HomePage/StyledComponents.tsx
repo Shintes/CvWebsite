@@ -9,7 +9,6 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import { TypographyProps } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 
 export const MinimalContainer = styled(Container)(({ theme }) => ({
@@ -22,7 +21,7 @@ export const MinimalContainer = styled(Container)(({ theme }) => ({
   },
 }));
 
-export const Section = styled(Box)(({ theme }) => ({
+export const Section = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   marginBottom: "5rem",
