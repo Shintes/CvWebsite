@@ -1,213 +1,74 @@
-import { Box, Container, Typography, Paper, Stack } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import CodeIcon from "@mui/icons-material/Code";
-import SchoolIcon from "@mui/icons-material/School";
-import WorkIcon from "@mui/icons-material/Work";
+import { motion } from "framer-motion";
 
 const About: React.FC = () => {
   const theme = useTheme();
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <Box sx={{ mb: 6, textAlign: "center" }}>
-        <Typography
-          variant="h2"
-          component="h1"
-          sx={{
-            mb: 2,
-            fontWeight: "bold",
-            background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            color: "transparent",
-          }}
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        px: 4,
+      }}
+    >
+      <Box
+        sx={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
-          About Me
-        </Typography>
-        <Typography variant="h5" color="text.secondary" sx={{ mb: 4 }}>
-          Passionate Developer | Problem Solver | Tech Enthusiast
-        </Typography>
-      </Box>
-
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
-        {/* Introduction Section */}
-        <Paper
-          elevation={3}
-          sx={{
-            p: 4,
-            borderRadius: 2,
-            transform: "translateY(0)",
-            transition: "transform 0.3s ease-in-out",
-            "&:hover": {
-              transform: "translateY(-4px)",
-            },
-          }}
-        >
-          <Typography variant="body1" sx={{ mb: 2, lineHeight: 1.8 }}>
-            Hello! I'm [Your Name], a passionate full-stack developer focused on
-            creating modern web applications. I enjoy working with cutting-edge
-            technologies and building efficient, scalable solutions that provide
-            great user experiences.
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "3rem", sm: "4rem", md: "6rem" },
+              fontWeight: 700,
+              marginBottom: 4,
+              letterSpacing: "-0.03em",
+              lineHeight: 1,
+            }}
+          >
+            About
           </Typography>
-          <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
-            My approach combines clean code principles with modern development
-            practices. I'm constantly exploring new technologies and frameworks
-            to stay at the forefront of web development.
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
+              color: "text.secondary",
+              marginBottom: 4,
+              maxWidth: "800px",
+              lineHeight: 1.7,
+            }}
+          >
+            I'm a passionate developer with a focus on creating modern web applications.
+            My approach combines clean code principles with modern development practices.
+            I'm constantly exploring new technologies and frameworks to stay at the
+            forefront of web development.
           </Typography>
-        </Paper>
-
-        {/* Technologies Section */}
-        <Box
-          sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 4,
-            "& > *": {
-              flex: "1 1 300px",
-              minWidth: 0,
-            },
-          }}
-        >
-          {/* Frontend Technologies */}
-          <Paper
-            elevation={3}
+          <Typography
+            variant="body1"
             sx={{
-              p: 3,
-              borderRadius: 2,
-              transform: "translateY(0)",
-              transition: "transform 0.3s ease-in-out",
-              "&:hover": {
-                transform: "translateY(-4px)",
-              },
+              fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
+              color: "text.secondary",
+              maxWidth: "800px",
+              lineHeight: 1.7,
             }}
           >
-            <Stack spacing={2}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  "& svg": {
-                    fontSize: "2rem",
-                    transition: "transform 0.3s ease",
-                  },
-                  "&:hover svg": {
-                    transform: "rotate(10deg)",
-                  },
-                }}
-              >
-                <CodeIcon color="primary" />
-                <Typography variant="h6">Frontend</Typography>
-              </Box>
-              <Typography variant="body2" sx={{ pl: 1 }}>
-                • React & Next.js
-                <br />
-                • TypeScript
-                <br />
-                • Material-UI & Tailwind
-                <br />
-                • Redux & React Query
-                <br />
-                • Responsive Design
-                <br />• WebGL & Three.js
-              </Typography>
-            </Stack>
-          </Paper>
-
-          {/* Backend Technologies */}
-          <Paper
-            elevation={3}
-            sx={{
-              p: 3,
-              borderRadius: 2,
-              transform: "translateY(0)",
-              transition: "transform 0.3s ease-in-out",
-              "&:hover": {
-                transform: "translateY(-4px)",
-              },
-            }}
-          >
-            <Stack spacing={2}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  "& svg": {
-                    fontSize: "2rem",
-                    transition: "transform 0.3s ease",
-                  },
-                  "&:hover svg": {
-                    transform: "rotate(10deg)",
-                  },
-                }}
-              >
-                <WorkIcon color="primary" />
-                <Typography variant="h6">Backend</Typography>
-              </Box>
-              <Typography variant="body2" sx={{ pl: 1 }}>
-                • Node.js & Express
-                <br />
-                • Python & FastAPI
-                <br />
-                • PostgreSQL & MongoDB
-                <br />
-                • REST & GraphQL APIs
-                <br />
-                • Docker & Kubernetes
-                <br />• AWS Services
-              </Typography>
-            </Stack>
-          </Paper>
-
-          {/* Development Tools */}
-          <Paper
-            elevation={3}
-            sx={{
-              p: 3,
-              borderRadius: 2,
-              transform: "translateY(0)",
-              transition: "transform 0.3s ease-in-out",
-              "&:hover": {
-                transform: "translateY(-4px)",
-              },
-            }}
-          >
-            <Stack spacing={2}>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                  "& svg": {
-                    fontSize: "2rem",
-                    transition: "transform 0.3s ease",
-                  },
-                  "&:hover svg": {
-                    transform: "rotate(10deg)",
-                  },
-                }}
-              >
-                <SchoolIcon color="primary" />
-                <Typography variant="h6">Tools & Practices</Typography>
-              </Box>
-              <Typography variant="body2" sx={{ pl: 1 }}>
-                • Git & GitHub Actions
-                <br />
-                • Jest & Testing Library
-                <br />
-                • CI/CD Pipelines
-                <br />
-                • Agile Methodologies
-                <br />
-                • VS Code & DevTools
-                <br />• Performance Optimization
-              </Typography>
-            </Stack>
-          </Paper>
-        </Box>
+            I believe in building efficient, scalable solutions that provide great
+            user experiences. My work spans across frontend and backend development,
+            with a particular interest in creating seamless, intuitive interfaces.
+          </Typography>
+        </motion.div>
       </Box>
-    </Container>
+    </Box>
   );
 };
 

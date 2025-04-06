@@ -3,6 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useState, useEffect } from "react";
 import { lightTheme, darkTheme } from "./theme";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -18,7 +19,9 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <CssBaseline />
-      <Menu toggleDarkMode={() => setDarkMode(!darkMode)} />
+      <AnimatePresence mode="wait">
+        <Menu toggleDarkMode={() => setDarkMode(!darkMode)} />
+      </AnimatePresence>
     </ThemeProvider>
   );
 }

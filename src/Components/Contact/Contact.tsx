@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { motion } from "framer-motion";
 
 const Contact: React.FC = () => {
   const theme = useTheme();
@@ -24,45 +25,149 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Box sx={{ color: theme.palette.text.primary }}>
-      <Typography variant="h1" component="h1">
-        Contact Us
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          fullWidth
-          label="Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          margin="normal"
-          required
-        />
-        <TextField
-          fullWidth
-          label="Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          margin="normal"
-          required
-        />
-        <TextField
-          fullWidth
-          label="Message"
-          name="message"
-          multiline
-          rows={4}
-          value={formData.message}
-          onChange={handleChange}
-          margin="normal"
-          required
-        />
-        <Button type="submit" variant="contained" sx={{ mt: 2 }}>
-          Submit
-        </Button>
-      </form>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        px: 4,
+      }}
+    >
+      <Box
+        sx={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <Typography
+            variant="h1"
+            sx={{
+              fontSize: { xs: "3rem", sm: "4rem", md: "6rem" },
+              fontWeight: 700,
+              marginBottom: 4,
+              letterSpacing: "-0.03em",
+              lineHeight: 1,
+            }}
+          >
+            Contact
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              fullWidth
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              margin="normal"
+              required
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  "& fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                  "&:hover fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                },
+                "& .MuiInputLabel-root": {
+                  color: theme.palette.text.secondary,
+                },
+                "& .MuiInputBase-input": {
+                  color: theme.palette.text.primary,
+                },
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              margin="normal"
+              required
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  "& fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                  "&:hover fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                },
+                "& .MuiInputLabel-root": {
+                  color: theme.palette.text.secondary,
+                },
+                "& .MuiInputBase-input": {
+                  color: theme.palette.text.primary,
+                },
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Message"
+              name="message"
+              multiline
+              rows={4}
+              value={formData.message}
+              onChange={handleChange}
+              margin="normal"
+              required
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  "& fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                  "&:hover fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: theme.palette.text.primary,
+                  },
+                },
+                "& .MuiInputLabel-root": {
+                  color: theme.palette.text.secondary,
+                },
+                "& .MuiInputBase-input": {
+                  color: theme.palette.text.primary,
+                },
+              }}
+            />
+            <Button
+              type="submit"
+              variant="outlined"
+              sx={{
+                mt: 4,
+                borderRadius: 0,
+                borderColor: theme.palette.text.primary,
+                color: theme.palette.text.primary,
+                "&:hover": {
+                  backgroundColor: theme.palette.text.primary,
+                  color: theme.palette.background.default,
+                  borderColor: theme.palette.text.primary,
+                },
+              }}
+            >
+              Send Message
+            </Button>
+          </form>
+        </motion.div>
+      </Box>
     </Box>
   );
 };
