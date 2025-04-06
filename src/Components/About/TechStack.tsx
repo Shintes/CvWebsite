@@ -1,4 +1,4 @@
-import { Box, Typography, Chip, Stack, Link } from "@mui/material";
+import { Typography, Chip, Stack, Link } from "@mui/material";
 import { motion } from "framer-motion";
 
 const TechStack: React.FC = () => {
