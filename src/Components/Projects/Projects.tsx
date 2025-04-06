@@ -10,6 +10,7 @@ import {
   useTheme,
   Button,
   Fade,
+  useMediaQuery,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import placeholderImage from "../../assets/placeholder.jpg";
@@ -23,26 +24,26 @@ const ProjectCard = styled(Card)(({ theme }) => ({
   position: "relative",
   overflow: "hidden",
   borderRadius: "16px",
-  boxShadow:
-    theme.palette.mode === "dark"
-      ? "0 8px 32px rgba(0, 0, 0, 0.2)"
-      : "0 8px 32px rgba(0, 0, 0, 0.1)",
-  transition: "all 0.3s ease-in-out",
+  background: theme.palette.background.paper,
+  boxShadow: "none",
+  border: `1px solid ${theme.palette.divider}`,
+  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
   "&:hover": {
     transform: "translateY(-8px)",
-    boxShadow:
+    boxShadow: `0 20px 40px ${
       theme.palette.mode === "dark"
-        ? "0 12px 40px rgba(0, 0, 0, 0.3)"
-        : "0 12px 40px rgba(0, 0, 0, 0.15)",
+        ? "rgba(0, 0, 0, 0.3)"
+        : "rgba(0, 0, 0, 0.1)"
+    }`,
     "& .MuiCardMedia-root": {
       transform: "scale(1.05)",
     },
     "& .project-overlay": {
       opacity: 1,
+      backdropFilter: "blur(8px)",
     },
     "& .MuiTypography-h5": {
       color: theme.palette.primary.main,
-      transition: "color 0.3s ease-in-out",
     },
   },
 }));
@@ -58,14 +59,34 @@ const ProjectOverlay = styled(Box)(({ theme }) => ({
   alignItems: "flex-end",
   padding: theme.spacing(2),
   opacity: 0,
-  transition: "opacity 0.3s ease-in-out",
+  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
 }));
 
 const StyledCardMedia = styled(CardMedia)({
   height: 240,
-  transition: "transform 0.3s ease-in-out",
-  alt: "Project Image",
+  transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
 });
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  borderRadius: "8px",
+  textTransform: "none",
+  fontWeight: 500,
+  padding: "8px 16px",
+  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+  "&:hover": {
+    transform: "translateY(-2px)",
+    boxShadow: `0 4px 12px ${theme.palette.primary.main}40`,
+  },
+}));
+
+const StyledChip = styled(Chip)(({ theme }) => ({
+  borderRadius: "6px",
+  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+  "&:hover": {
+    transform: "translateY(-2px)",
+    boxShadow: `0 4px 8px ${theme.palette.primary.main}40`,
+  },
+}));
 
 const projects = [
   {
@@ -96,11 +117,12 @@ const projects = [
 
 function Projects() {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
       <Fade in timeout={1000}>
-        <Box sx={{ mb: 8, textAlign: "center" }}>
+        <Box sx={{ mb: { xs: 4, md: 8 }, textAlign: "center" }}>
           <Typography
             variant="h2"
             component="h1"
@@ -111,6 +133,7 @@ function Projects() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               mb: 2,
+              fontSize: { xs: "2.5rem", md: "3.5rem" },
             }}
           >
             My Projects
@@ -118,7 +141,11 @@ function Projects() {
           <Typography
             variant="h6"
             color="text.secondary"
-            sx={{ maxWidth: "600px", mx: "auto" }}
+            sx={{
+              maxWidth: "600px",
+              mx: "auto",
+              fontSize: { xs: "1rem", md: "1.25rem" },
+            }}
           >
             Here are some of the projects I've worked on. Each project
             represents a unique challenge and learning opportunity.
@@ -128,61 +155,53 @@ function Projects() {
 
       <Grid container spacing={4} sx={{ justifyContent: "center" }}>
         {projects.map((project, index) => (
-          <Grid
-            key={index}
-            size={{ xs: 12, sm: 6, md: 4 }}
-            sx={{ display: "flex" }}
-          >
-            <ProjectCard sx={{ width: "100%" }}>
+          <Grid key={index} size={{ xs: 12, sm: 6, md: 4 }} component="div">
+            <ProjectCard>
               <StyledCardMedia
                 image={project.image}
                 sx={{ objectFit: "cover" }}
               />
               <ProjectOverlay className="project-overlay">
                 <Box sx={{ width: "100%", display: "flex", gap: 2 }}>
-                  <Button
+                  <StyledButton
                     variant="outlined"
                     color="primary"
                     startIcon={<GitHubIcon />}
+                    LinkComponent="a"
                     href={project.link}
-                    target="_blank"
                     sx={{
+                      flex: 1,
                       borderColor: theme.palette.primary.main,
                       color: theme.palette.primary.main,
                       "&:hover": {
                         backgroundColor: theme.palette.primary.main,
                         color: theme.palette.primary.contrastText,
-                        transform: "translateY(-2px)",
-                        boxShadow: `0 4px 8px ${theme.palette.primary.main}40`,
                       },
-                      transition: "all 0.3s ease-in-out",
                     }}
                   >
                     Code
-                  </Button>
-                  <Button
+                  </StyledButton>
+                  <StyledButton
                     variant="outlined"
                     color="inherit"
                     startIcon={<OpenInNewIcon />}
+                    LinkComponent="a"
                     href={project.link}
-                    target="_blank"
                     sx={{
+                      flex: 1,
                       borderColor: theme.palette.primary.main,
                       color: theme.palette.primary.main,
                       "&:hover": {
                         backgroundColor: theme.palette.primary.main,
                         color: theme.palette.primary.contrastText,
-                        transform: "translateY(-2px)",
-                        boxShadow: `0 4px 8px ${theme.palette.primary.main}40`,
                       },
-                      transition: "all 0.3s ease-in-out",
                     }}
                   >
                     Demo
-                  </Button>
+                  </StyledButton>
                 </Box>
               </ProjectOverlay>
-              <CardContent sx={{ flexGrow: 1 }}>
+              <CardContent sx={{ flexGrow: 1, p: 3 }}>
                 <Typography
                   gutterBottom
                   variant="h5"
@@ -190,16 +209,23 @@ function Projects() {
                   sx={{
                     fontWeight: 600,
                     transition: "color 0.3s ease-in-out",
+                    mb: 2,
                   }}
                 >
                   {project.title}
                 </Typography>
-                <Typography color="text.secondary" sx={{ mb: 2 }}>
+                <Typography
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    fontSize: { xs: "0.875rem", md: "1rem" },
+                  }}
+                >
                   {project.description}
                 </Typography>
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                   {project.technologies.map((tech, techIndex) => (
-                    <Chip
+                    <StyledChip
                       key={techIndex}
                       label={tech}
                       size="small"
@@ -207,14 +233,11 @@ function Projects() {
                         backgroundColor:
                           theme.palette.mode === "dark"
                             ? "rgba(255, 255, 255, 0.1)"
-                            : "rgba(0, 0, 0, 0.1)",
+                            : "rgba(0, 0, 0, 0.05)",
                         "&:hover": {
                           backgroundColor: theme.palette.primary.main,
                           color: theme.palette.primary.contrastText,
-                          transform: "translateY(-2px)",
-                          boxShadow: `0 4px 8px ${theme.palette.primary.main}40`,
                         },
-                        transition: "all 0.3s ease-in-out",
                       }}
                     />
                   ))}
