@@ -35,7 +35,6 @@ const LeftSideControls = styled(Box)(({ theme }) => ({
   },
 }));
 
-
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     backgroundColor: theme.palette.background.default,
@@ -57,9 +56,10 @@ const StyledDrawer = styled(Drawer)(({ theme }) => ({
 }));
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  background: theme.palette.mode === "dark" 
-    ? `linear-gradient(45deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`
-    : `linear-gradient(45deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
+  background:
+    theme.palette.mode === "dark"
+      ? `linear-gradient(45deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`
+      : `linear-gradient(45deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
   backdropFilter: "blur(10px)",
   borderBottom: `1px solid ${
     theme.palette.mode === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"
@@ -93,82 +93,97 @@ function Menu({ toggleDarkMode }: MenuProps) {
 
   return (
     <Router>
-      <StyledAppBar position="sticky" elevation={0}> 
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between", py: 1 , backgroundColor: "inherit" }}>
-          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <IconButton
-              edge="start"
-              aria-label="menu"
-              onClick={toggleDrawer}
-              sx={{
-                transition: "transform 0.3s ease",
-                "&:hover": { transform: "scale(1.1)" },
-                color: theme.palette.text.primary,
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
+      <StyledAppBar position="sticky" elevation={0}>
+        <Toolbar>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <IconButton
+                edge="start"
+                aria-label="menu"
+                onClick={toggleDrawer}
+                sx={{
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "scale(1.1)" },
+                  color: theme.palette.text.primary,
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
+            <LeftSideControls>
+              <IconButton
+                onClick={toggleDarkMode}
+                sx={{
+                  transition: "transform 0.3s ease",
+                  "&:hover": { transform: "rotate(180deg)" },
+                }}
+              >
+                {useTheme().palette.mode === "dark" ? (
+                  <Brightness7 color="inherit" />
+                ) : (
+                  <Brightness4 color="inherit" />
+                )}
+              </IconButton>
+            </LeftSideControls>
           </Box>
-          <LeftSideControls>
-            <IconButton
-              onClick={toggleDarkMode}
-              sx={{
-                transition: "transform 0.3s ease",
-                "&:hover": { transform: "rotate(180deg)" },
-              }}
-            >
-              {useTheme().palette.mode === "dark" ? (
-                <Brightness7 color="inherit" />
-              ) : (
-                <Brightness4 color="inherit" />
-              )}
-            </IconButton>
-          </LeftSideControls>
         </Toolbar>
       </StyledAppBar>
       <StyledDrawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
-        <div role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
-          <NavButton
-            color="inherit"
-            component={Link}
-            to="/"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            Home
-          </NavButton>
-          <NavButton
-            color="inherit"
-            component={Link}
-            to="/about"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            About
-          </NavButton>
-          <NavButton
-            color="inherit"
-            component={Link}
-            to="/projects"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            Projects
-          </NavButton>
-          <NavButton
-            color="inherit"
-            component={Link}
-            to="/blog"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            Blog
-          </NavButton>
-          <NavButton
-            color="inherit"
-            component={Link}
-            to="/contact"
-            sx={{ textAlign: "left", width: "100%" }}
-          >
-            Contact
-          </NavButton>
-        </div>
+        <Box
+          role="presentation"
+          onClick={toggleDrawer}
+          onKeyDown={toggleDrawer}
+        >
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Home
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/about"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              About
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/projects"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Projects
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/blog"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Blog
+            </NavButton>
+            <NavButton
+              color="inherit"
+              component={Link}
+              to="/contact"
+              sx={{ textAlign: "left", width: "100%" }}
+            >
+              Contact
+            </NavButton>
+          </Box>
+        </Box>
       </StyledDrawer>
       <Container>
         <Routes>

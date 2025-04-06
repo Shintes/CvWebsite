@@ -24,24 +24,43 @@ function ConnectSection({
   const navigate = useNavigate();
 
   return (
-    <Section>
+    <Section
+      sx={{
+        minHeight: "10vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <SectionTitle>Connect</SectionTitle>
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: { xs: "center", md: "center" },
+          gap: { xs: "2rem", md: "0" },
+          width: "100%",
+          maxWidth: "1200px",
+          margin: "0 auto",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            gap: "1rem",
+            alignItems: "center",
+          }}
+        >
           <LinkBox href={`mailto:${email}`}>
             <EmailIcon /> {email}
           </LinkBox>
           <LinkBox href={linkedin} target="_blank">
-            <LinkedInIcon />
+            <LinkedInIcon /> LinkedIn
           </LinkBox>
           <LinkBox href={github} target="_blank">
-            <GitHubIcon />
+            <GitHubIcon /> GitHub
           </LinkBox>
         </Box>
 
