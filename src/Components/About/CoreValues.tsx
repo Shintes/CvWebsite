@@ -35,13 +35,9 @@ const CoreValues: React.FC = () => {
         variant="h2"
         sx={{
           fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-          fontWeight: 600,
-          marginTop: 6,
-          marginBottom: 3,
+          fontWeight: 700,
+          marginBottom: 2,
           color: "text.primary",
-          background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
         }}
       >
         Core Values

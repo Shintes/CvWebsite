@@ -41,9 +41,7 @@ function ThemeWrapper() {
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <ThemeWrapper />
-      </BrowserRouter>
+      <ThemeWrapper />
     </Provider>
   );
 }
