@@ -10,7 +10,7 @@ import {
 import { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import MenuIcon from "@mui/icons-material/Menu";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import Home from "../Components/HomePage/Homepage";
 import About from "../Components/About/About";
 import Contact from "../Components/Contact/Contact";
@@ -94,7 +94,7 @@ function Menu({ toggleDarkMode }: MenuProps) {
   };
 
   return (
-    <Router>
+    <>
       <StyledAppBar position="sticky" elevation={0}>
         <Toolbar>
           <Box
@@ -137,6 +137,7 @@ function Menu({ toggleDarkMode }: MenuProps) {
           </Box>
         </Toolbar>
       </StyledAppBar>
+
       <StyledDrawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
         <Box
           role="presentation"
@@ -196,7 +197,7 @@ function Menu({ toggleDarkMode }: MenuProps) {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Container>
-    </Router>
+    </>
   );
 }
 
