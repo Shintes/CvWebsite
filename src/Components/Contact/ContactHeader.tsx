@@ -19,14 +19,10 @@ const ContactHeader = ({ title, subtitle }: ContactHeaderProps) => {
       <Typography
         variant="h1"
         sx={{
-          fontSize: { xs: "3rem", sm: "4rem", md: "5rem" },
+          fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem" },
           fontWeight: 700,
-          marginBottom: 4,
-          letterSpacing: "-0.03em",
-          lineHeight: 1,
-          background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+          marginBottom: 2,
+          color: "text.primary",
         }}
       >
         {title}

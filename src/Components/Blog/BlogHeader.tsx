@@ -23,23 +23,10 @@ const BlogHeader = ({ title, subtitle }: BlogHeaderProps) => {
             component="h1"
             gutterBottom
             sx={{
+              fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem" },
               fontWeight: 700,
-              background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              mb: 2,
-              position: "relative",
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                bottom: -8,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "60px",
-                height: "4px",
-                background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                borderRadius: "2px",
-              },
+              marginBottom: 2,
+              color: "text.primary",
             }}
           >
             {title}

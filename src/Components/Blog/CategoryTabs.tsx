@@ -32,10 +32,20 @@ const CategoryTabs = ({
             label={category}
             value={category}
             sx={{
-              textTransform: "none",
+              fontSize: "1rem",
               fontWeight: 600,
+              color: "text.primary",
+              textTransform: "none",
+              minWidth: "auto",
+              padding: "6px 12px",
+              borderRadius: "20px",
+              transition: "all 0.2s ease-in-out",
               "&.Mui-selected": {
-                color: theme.palette.primary.main,
+                color: "text.primary",
+                backgroundColor: "action.selected",
+              },
+              "&:hover": {
+                backgroundColor: "action.hover",
               },
             }}
           />

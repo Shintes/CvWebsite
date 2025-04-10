@@ -30,9 +30,7 @@ const About: React.FC = () => {
               marginBottom: 4,
               letterSpacing: "-0.03em",
               lineHeight: 1,
-              background: "linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              color: "text.primary",
             }}
           >
             About Me
