@@ -4,7 +4,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { useEffect } from "react";
 import { lightTheme, darkTheme } from "./theme";
 import { AnimatePresence } from "framer-motion";
-import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { useDispatch, useSelector } from "react-redux";

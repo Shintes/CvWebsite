@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { Fade } from "@mui/material";
 
@@ -8,8 +8,6 @@ interface BlogHeaderProps {
 }
 
 const BlogHeader = ({ title, subtitle }: BlogHeaderProps) => {
-  const theme = useTheme();
-
   return (
     <Fade in timeout={1000}>
       <Box sx={{ mb: 8, textAlign: "center" }}>

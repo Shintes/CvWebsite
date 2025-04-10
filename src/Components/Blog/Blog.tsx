@@ -1,4 +1,4 @@
-import { Container, Grid, Grid as MuiGrid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useState } from "react";
 import BlogHeader from "./BlogHeader";
 import PostCard from "./BlogCard";
