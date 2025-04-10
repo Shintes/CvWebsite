@@ -30,23 +30,25 @@ function Menu({ toggleDarkMode }: MenuProps) {
   }, [isMobile]);
 
   return (
-    <Router>
-      <MenuAppBar
-        isMobile={isMobile}
-        onMenuClick={toggleDrawer}
-        onThemeToggle={toggleDarkMode}
-      />
-      <MenuDrawer open={drawerOpen} onClose={toggleDrawer} />
-      <Container maxWidth="lg" sx={{ py: 4 }}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Container>
-    </Router>
+    <>
+      <Router>
+        <MenuAppBar
+          isMobile={isMobile}
+          onMenuClick={toggleDrawer}
+          onThemeToggle={toggleDarkMode}
+        />
+        <MenuDrawer open={drawerOpen} onClose={toggleDrawer} />
+        <Container maxWidth="lg" sx={{ py: 4 }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Container>
+      </Router>
+    </>
   );
 }
 
