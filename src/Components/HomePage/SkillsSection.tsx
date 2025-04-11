@@ -9,7 +9,6 @@ interface SkillsSectionProps {
 
 const SkillsSection = styled(Box)(({ theme }) => ({
   padding: theme.spacing(8, 0),
-  background: `linear-gradient(135deg, ${theme.palette.primary.main}05 0%, ${theme.palette.secondary.main}05 100%)`,
 }));
 
 const SkillGrid = styled(Box)(({ theme }) => ({
@@ -62,7 +61,6 @@ const SkillsSectionComponent = ({ skills }: SkillsSectionProps) => {
             fontSize: { xs: "2rem", md: "2.5rem" },
             fontWeight: 700,
             marginBottom: 4,
-            background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
           }}

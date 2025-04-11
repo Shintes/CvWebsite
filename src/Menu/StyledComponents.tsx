@@ -3,7 +3,7 @@ import { AppBar, Button, Drawer, IconButton, styled } from "@mui/material";
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   background: `linear-gradient(135deg, ${
     theme.palette.mode === "dark"
-      ? "rgba(18, 18, 18, 0.8)"
+      ? "rgba(15, 23, 42, 0.8)"
       : "rgba(255, 255, 255, 0.8)"
   })`,
   backdropFilter: "blur(10px)",
@@ -11,14 +11,14 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
     theme.palette.mode === "dark" ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"
   }`,
   boxShadow: "none",
-  transition: "all 0.3s ease",
+  transition: "all 0.3s ease-in-out",
 }));
 
 export const StyledDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     background: `linear-gradient(135deg, ${
       theme.palette.mode === "dark"
-        ? "rgba(18, 18, 18, 0.9)"
+        ? "rgba(15, 23, 42, 0.9)"
         : "rgba(255, 255, 255, 0.9)"
     })`,
     backdropFilter: "blur(10px)",

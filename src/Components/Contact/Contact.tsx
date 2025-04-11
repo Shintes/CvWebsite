@@ -36,7 +36,6 @@ const Contact: React.FC = () => {
         justifyContent: "center",
         px: 4,
         py: 8,
-        background: `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`,
       }}
     >
       <Grid container spacing={4} sx={{ maxWidth: "1200px", width: "100%" }}>

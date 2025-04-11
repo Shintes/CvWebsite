@@ -15,17 +15,31 @@ interface MenuAppBarProps {
   isMobile: boolean;
   onMenuClick: () => void;
   onThemeToggle: () => void;
+  scrolled: boolean;
 }
 
 const MenuAppBar = ({
   isMobile,
   onMenuClick,
   onThemeToggle,
+  scrolled,
 }: MenuAppBarProps) => {
   const theme = useTheme();
 
   return (
-    <StyledAppBar position="sticky" elevation={0}>
+    <StyledAppBar
+      position="sticky"
+      elevation={scrolled ? 1 : 0}
+      sx={{
+        backgroundColor: scrolled
+          ? theme.palette.mode === "dark"
+            ? "rgba(15, 23, 42, 0.8)"
+            : "rgba(255, 255, 255, 0.8)"
+          : "transparent",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        transition: "all 0.3s ease-in-out",
+      }}
+    >
       <Toolbar>
         <Box
           sx={{

@@ -1,134 +1,91 @@
-# Modern CV Website
+# CV Website
 
-A sleek, interactive CV/Portfolio website built with React, TypeScript, and Material-UI. Features a modern design with smooth animations, dark mode support, and multilingual capabilities.
+A modern, responsive CV/Portfolio website built with React, TypeScript, and Material-UI. The application features a dynamic theme system, smooth animations, and a professional layout.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-18.x-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)
-![Material UI](https://img.shields.io/badge/Material%20UI-5.x-purple)
+## Features
 
-## 🌟 Features
+- 🎨 Dynamic theme system with light/dark mode support
+- 🌙 Automatic theme detection based on system preferences
+- 🎭 Smooth animations using Framer Motion
+- 📱 Responsive design with Material-UI components
+- 🔄 State management with Redux Toolkit
+- 🧭 React Router for navigation
+- ⚡ Fast development with Vite
+- 🛡️ TypeScript for type safety
+- 🎨 Custom theme configuration
+- 🖼️ Animated background effects
+- ⏳ Loading states with Suspense
 
-- **Modern UI**: Clean interface with smooth animations and transitions
-- **Dark/Light Mode**: Toggle between themes with animated transitions
-- **Multilingual Support**: Available in English, Spanish, and French
-- **Responsive Design**: Optimized for all device sizes
-- **Interactive Components**: Engaging hover effects and card interactions
-- **Dynamic Content**: Easy to update personal information and projects
-- **Smooth Navigation**: React Router for seamless page transitions
+## Tech Stack
 
-## 🚀 Quick Start
+### Frontend
 
-1. **Clone the repository**
+- React 18
+- TypeScript
+- Material-UI (MUI) v7
+- Redux Toolkit
+- React Router v7
+- Framer Motion
+- React Icons
+
+### Development Tools
+
+- Vite
+- ESLint
+- TypeScript
+- Emotion (for styled components)
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/cv-website.git
 cd cv-website
 ```
 
-2. **Install dependencies**
+2. Install dependencies:
 
 ```bash
 npm install
+# or
+yarn install
 ```
 
-3. **Start development server**
+### Available Scripts
 
-```bash
-npm run dev
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-## 🛠️ Tech Stack
+### Theme Configuration
 
-- **Core**: React 18 with TypeScript
-- **UI Framework**: Material-UI v5
-- **Routing**: React Router v6
-- **Build Tool**: Vite
-- **State Management**: React Hooks
-- **Styling**: MUI Styled Components
+The application uses a custom theme system defined in `src/theme.ts`. You can modify:
 
-## 📁 Project Structure
+- Color palette
+- Typography
+- Component styles
+- Dark/light mode configurations
 
-```
-src/
-├── Components/
-│   ├── HomePage/
-│   │   ├── HeroSection.tsx
-│   │   ├── AboutSection.tsx
-│   │   ├── SkillsSection.tsx
-│   │   ├── ProjectsSection.tsx
-│   │   └── ConnectSection.tsx
-│   ├── About/
-│   └── Contact/
-├── Menu/
-│   └── Menu.tsx
-├── Dto/
-│   ├── PersonalInformation.ts
-│   ├── ProjectDto.ts
-│   └── SkillDto.ts
-└── App.tsx
-```
+### State Management
 
-## 📱 Main Components
+The application uses Redux Toolkit for state management, with a theme slice for handling dark/light mode preferences.
 
-- **Home**: Dynamic landing page with personal information and skills showcase
-- **About**: Professional summary and technology expertise
-- **Contact**: Interactive contact form with validation
-
-## ⚙️ Configuration
-
-Update your personal information in `src/Components/HomePage/Homepage.tsx`:
-
-```typescript
-const data: PersonalInformation = {
-  name: "Your Name",
-  title: "Your Title",
-  about: "Your Description",
-  // ... other personal details
-};
-```
-
-## 🎨 Features in Detail
-
-### Navigation
-
-- Responsive drawer menu
-- Smooth page transitions
-- Language selector
-- Theme toggle
-
-### Home Page
-
-- Hero section with name and title
-- Skills visualization
-- Project showcase
-- Experience timeline
-- Education and certifications
-- Contact information
-
-### About Page
-
-- Professional summary
-- Technology expertise cards
-- Interactive elements
-
-### Contact Page
-
-- Validated contact form
-- Real-time input feedback
-- Submission handling
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📧 Contact
+## Acknowledgments
 
-Your Name - [your.email@example.com](mailto:your.email@example.com)
-
-Project Link: [https://github.com/yourusername/cv-website](https://github.com/yourusername/cv-website)
-
-## 🙏 Acknowledgments
-
-- Material-UI Team
-- React Community
+- Material-UI for the component library
+- Framer Motion for animations
+- React Router for routing
+- Redux Toolkit for state management

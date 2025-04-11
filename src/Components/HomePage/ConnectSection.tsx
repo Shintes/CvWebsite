@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import EmailIcon from "@mui/icons-material/Email";
+import SendIcon from "@mui/icons-material/Send";
 import { LinkBox, Section, SectionTitle } from "./StyledComponents";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -53,38 +54,54 @@ function ConnectSection({
             alignItems: "center",
           }}
         >
-          <LinkBox href={`mailto:${email}`}>
-            <EmailIcon /> {email}
-          </LinkBox>
-          <LinkBox href={linkedin} target="_blank">
-            <LinkedInIcon /> LinkedIn
-          </LinkBox>
-          <LinkBox href={github} target="_blank">
-            <GitHubIcon /> GitHub
-          </LinkBox>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <LinkBox href={`mailto:${email}`}>
+              <EmailIcon /> {email}
+            </LinkBox>
+          </motion.div>
+
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <LinkBox href={linkedin} target="_blank">
+              <LinkedInIcon /> LinkedIn
+            </LinkBox>
+          </motion.div>
+
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <LinkBox href={github} target="_blank">
+              <GitHubIcon /> GitHub
+            </LinkBox>
+          </motion.div>
+
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <LinkBox
+              onClick={() => navigate("/contact")}
+              sx={{
+                padding: theme.spacing(1, 2),
+                fontSize: "1.2rem",
+                borderRadius: "4px",
+                background: "transparent",
+                color: theme.palette.text.primary,
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                "&:hover": {
+                  color: theme.palette.primary.main,
+                },
+              }}
+            >
+              <SendIcon fontSize="small" />
+              Let's Work Together
+            </LinkBox>
+          </motion.div>
         </Box>
 
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Box
-            component="button"
-            onClick={() => navigate("/contact")}
-            sx={{
-              padding: theme.spacing(1.5, 4),
-              fontSize: "1rem",
-              borderRadius: "4px",
-              background: "transparent",
-              color: theme.palette.text.primary,
-              border: `none`,
-              cursor: "pointer",
-              transition: "all 0.2s ease",
-            }}
-          >
-            Contact Me
-          </Box>
-        </motion.div>
-
         <Box>
-          <Typography variant="body2" sx={{ color: "inherit" }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "inherit", fontSize: "1.2rem" }}
+          >
             📍 {location}
           </Typography>
         </Box>

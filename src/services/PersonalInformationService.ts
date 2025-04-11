@@ -5,9 +5,9 @@ export const getPersonalInformation =
     // In a real application, this would be an API call
     return {
       name: "John Doe",
-      title: "Full Stack Developer",
+      title: "Software Engineer",
       about:
-        "Passionate developer with experience in building web applications using modern technologies. Skilled in React, Node.js, and cloud services.",
+        "Passionate software engineer with experience in building web applications using modern technologies. Skilled in React, Node.js, and cloud services.",
       email: "john.doe@example.com",
       location: "San Francisco, CA",
       phone: "+1 (555) 123-4567",

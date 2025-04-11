@@ -45,8 +45,8 @@ const About: React.FC = () => {
               lineHeight: 1.7,
             }}
           >
-            I'm a full-stack developer specializing in modern web technologies
-            and enterprise-grade applications. With expertise in React, Redux
+            I'm a software engineer specializing in modern web technologies and
+            enterprise-grade applications. With expertise in React, Redux
             Toolkit, and .NET Core, I build scalable, maintainable solutions
             that deliver exceptional user experiences.
           </Typography>
