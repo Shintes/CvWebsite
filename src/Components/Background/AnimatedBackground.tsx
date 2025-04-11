@@ -1,9 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { useTheme } from "@mui/material";
 
 const AnimatedBackground = () => {
   const theme = useTheme();
+  const isDesktop = useMediaQuery("(min-width:900px)");
+
+  if (!isDesktop) return null;
 
   return (
     <Box
