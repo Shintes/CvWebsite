@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import { Container, Box, CircularProgress } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { PersonalInformation } from "../../Dto/PersonalInformation";
@@ -37,7 +36,6 @@ function HomePage() {
   const [languages, setLanguages] = useState<Language[]>([]);
   const [activeTab, setActiveTab] = useState<string | false>(false);
   const [loading, setLoading] = useState(true);
-  const theme = useTheme();
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: string) => {
     setActiveTab(newValue);
@@ -93,7 +91,7 @@ function HomePage() {
   const skillsData = skills;
 
   return (
-    <Box sx={{ backgroundColor: theme.palette.background.default }}>
+    <Box>
       <MinimalContainer>
         <HeroSection name={name} title={title} about={about} />
         <AboutSectionComponent about={about} />
