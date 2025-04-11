@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import ContactHeader from "./ContactHeader";
 import SocialLinks from "./SocialLinks";
 import ContactInfo from "./ContactInfo";
 import ContactForm from "./ContactForm";
 
 const Contact: React.FC = () => {
-  const theme = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
