@@ -166,7 +166,6 @@ export const TabCountBadge = styled(Typography)(({ theme }) => ({
   borderRadius: "4px",
 }));
 
-// Section containers
 export const StyledSection = styled(Box)(({ theme }) => ({
   padding: theme.spacing(8, 0),
   background: `linear-gradient(135deg, ${theme.palette.primary.main}05 0%, ${theme.palette.secondary.main}05 100%)`,
@@ -178,7 +177,6 @@ export const StyledContentContainer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(4),
 }));
 
-// Typography styles
 export const titleStyles = {
   fontSize: { xs: "2rem", md: "2.5rem" },
   fontWeight: 700,
@@ -195,7 +193,6 @@ export const subtitleStyles = {
   marginBottom: 3,
 };
 
-// Buttons
 export const StyledPrimaryButton = styled(Button)(({ theme }) => ({
   padding: theme.spacing(1.5, 4),
   fontSize: "1.1rem",
@@ -226,7 +223,6 @@ export const StyledSecondaryButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-// Icons
 export const StyledIconButton = styled(IconButton)(({ theme }) => ({
   width: "48px",
   height: "48px",

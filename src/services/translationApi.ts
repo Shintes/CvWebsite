@@ -1,12 +1,12 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const translationApi = createApi({
-  reducerPath: 'translationApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://api.example.com' }), // Replace with your API base URL
+  reducerPath: "translationApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "https://api.example.com" }),
   endpoints: (builder) => ({
     getTranslations: builder.query({
       query: (lang) => ({
-        url: '/translate',
+        url: "/translate",
         params: {
           lang,
           texts: ["About Me", "Skills", "Experience", "Projects", "Contact"],
@@ -16,4 +16,4 @@ export const translationApi = createApi({
   }),
 });
 
-export const { useGetTranslationsQuery } = translationApi; 
+export const { useGetTranslationsQuery } = translationApi;

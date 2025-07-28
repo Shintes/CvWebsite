@@ -1,7 +1,6 @@
 import { Skill } from "../Dto/SkillDto";
 
 export const getSkills = async (): Promise<Skill[]> => {
-  // In a real application, this would be an API call
   return [
     {
       id: "1",
@@ -60,4 +59,4 @@ export const getSkills = async (): Promise<Skill[]> => {
       icon: "material-ui",
     },
   ];
-}; 
+};

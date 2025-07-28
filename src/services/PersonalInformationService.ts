@@ -2,7 +2,6 @@ import { PersonalInformation } from "../Dto/PersonalInformation";
 
 export const getPersonalInformation =
   async (): Promise<PersonalInformation> => {
-    // In a real application, this would be an API call
     return {
       name: "John Doe",
       title: "Software Engineer",

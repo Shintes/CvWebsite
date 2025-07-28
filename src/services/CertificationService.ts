@@ -1,7 +1,6 @@
 import { Certification } from "../Dto/Certification";
 
 export async function getCertifications(): Promise<Certification[]> {
-  // TODO: Replace with actual API call
   return [
     {
       id: "1",

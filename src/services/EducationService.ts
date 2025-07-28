@@ -1,7 +1,6 @@
 import { Education } from "../Dto/Education";
 
 export async function getEducation(): Promise<Education[]> {
-  // TODO: Replace with actual API call
   return [
     {
       id: "1",
